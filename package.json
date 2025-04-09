@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host 127.0.0.1 --port 3000",
+    "dev": "vite --host 127.0.0.1 --port 3001",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -32,6 +32,7 @@
     "@tanstack/react-table": "^8.21.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "firebase": "^11.6.0",
     "lucide-react": "^0.485.0",
     "next-themes": "^0.4.6",
     "react": "^19.0.0",

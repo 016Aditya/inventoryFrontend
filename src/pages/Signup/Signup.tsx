@@ -1,7 +1,8 @@
 import { GalleryVerticalEnd } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "@/config/FirebaseConfig"
+import {auth} from "@/config/FirebaseConfig"
+import { createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider} from "firebase/auth";
+
 
 import {
   Card,
@@ -13,16 +14,29 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
-export function SigninForm() {
-  const signinwithGoogle = async () => {
-    const provider = new GoogleAuthProvider();
-    try {
-      const result = await signInWithPopup(auth, provider);
-      console.log(result.user);
-    } catch (error) {
-      console.error("Error signing in with Google:", error);
+export function SignupForm() {
+    const signupwithGoogle = async () =>{
+        const provider = new GoogleAuthProvider();
+        try {
+            const result = await signInWithPopup(auth, provider);
+            console.log(result.user);
+        } catch (error) {
+            console.error("Error signing in with Google:", error);
+        }
     }
-  }
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();  //prevent page from reloading refreshing
+        const formData = new FormData(event.currentTarget);
+        const email = formData.get("email") as string;
+        const password = formData.get("password") as string;
+        try {
+        console.log(email,password)
+        await createUserWithEmailAndPassword(auth, email, password);
+        console.log("User created successfully!");
+        } catch (error) {
+        console.error("Error creating user:", error);
+        }
+    };
   return (
     <div className="flex min-h-svh flex-col items-center justify-center gap-6 bg-muted p-6 md:p-10">
       <div className="flex w-full max-w-sm flex-col gap-6">
@@ -90,13 +104,13 @@ export function SigninForm() {
                   <Input name="password" type="password" required />
                 </div>
                 <Button type="submit" className="w-full">
-                  Sign in
+                  Signup
                 </Button>
               </div>
               <div className="text-center text-sm">
-                Dont have an account?{" "}
+                Already have an account?{" "}
                 <a href="#" className="underline underline-offset-4">
-                  Signup
+                  Login
                 </a>
               </div>
             </div>

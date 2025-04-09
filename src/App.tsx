@@ -1,6 +1,8 @@
 import { Routes, Route, BrowserRouter as Router } from "react-router";
 import { InventoryTable } from "./pages/Inventory/InventoryTable";
 import { SellersTable } from "./pages/Sellers/SellersTable";
+import { SignupForm } from "@/pages/Signup/Signup";
+
 
 import { SigninForm } from "@/pages/Login/SigninForm";
 import Layout from "./Layout";
@@ -15,6 +17,7 @@ export default function App() {
         <Route path="/sellers" element={<Layout><SellersTable/></Layout>}></Route>
         <Route path="/products" element={<Layout><ProductsTable/></Layout>} />
         <Route path="/" element={<Layout><WarehouseTable/></Layout>}></Route>
+        <Route path="/signup" element={<SignupForm />}></Route>
       </Routes>
     </Router>
   );
