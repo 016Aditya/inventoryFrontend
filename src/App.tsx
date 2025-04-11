@@ -18,6 +18,7 @@ export default function App() {
         <Route path="/products" element={<Layout><ProductsTable/></Layout>} />
         <Route path="/" element={<Layout><WarehouseTable/></Layout>}></Route>
         <Route path="/signup" element={<SignupForm />}></Route>
+        <Route path="/signin" element={<SigninForm/>}></Route>
       </Routes>
     </Router>
   );
