@@ -3,7 +3,6 @@ import { InventoryTable } from "./pages/Inventory/InventoryTable";
 import { SellersTable } from "./pages/Sellers/SellersTable";
 import { SignupForm } from "@/pages/Signup/Signup";
 
-
 import { SigninForm } from "@/pages/Login/SigninForm";
 import Layout from "./Layout";
 import { ProductsTable } from "./pages/Products/ProductsTable";

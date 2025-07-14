@@ -3,6 +3,10 @@ import { GalleryVerticalEnd } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { Link } from "react-router-dom"
+import { AuthContext } from "@/context/AuthContext"
+import { useContext } from "react"
+import { useNavigate } from "react-router-dom"
 import {
   Card,
   CardContent,
@@ -19,12 +23,17 @@ import {
 
 export function SigninForm() {
   const [errorMsg, setErrorMsg] = useState("")
+  const {setUser} = useContext(AuthContext)
+  const navigate = useNavigate()
 
   const signinwithGoogle = async () => {
     const provider = new GoogleAuthProvider()
     try {
       const result = await signInWithPopup(auth, provider)
       console.log("Google user signed in:", result.user)
+      setUser(result.user)
+      setTimeout(() => {navigate("/")},10000)
+      
       // Navigate or update UI here
     } catch (error) {
       console.error("Error signing in with Google:", error)
@@ -41,6 +50,7 @@ export function SigninForm() {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password)
       console.log("User signed in successfully:", userCredential.user)
+      setUser(userCredential.user)
       setErrorMsg("")
       // Navigate or update UI here
     } catch (error: unknown) {
@@ -140,9 +150,9 @@ export function SigninForm() {
 
                 <div className="text-center text-sm">
                   Don't have an account?{" "}
-                  <a href="#" className="underline underline-offset-4">
+                  <Link to="/signup" className="underline underline-offset-4">
                     Signup
-                  </a>
+                  </Link>
                 </div>
               </div>
             </form>

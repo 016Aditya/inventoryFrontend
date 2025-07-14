@@ -1,8 +1,6 @@
 import { AppSidebar } from "@/components/app-sidebar"
-import { InventoryTable } from "@/pages/Inventory/InventoryTable"
 import { SiteHeader } from "@/components/site-header"
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
-import data from "./data.json"
 
 import { ReactNode } from "react";
 
